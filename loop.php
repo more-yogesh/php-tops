@@ -50,7 +50,6 @@ xxxxx
 
 */
 
-// echo " condition is complete";
 
 
 $cricketers = [
@@ -62,5 +61,5 @@ $cricketers = [
 ];
 
 foreach ($cricketers as $key => $value) {
-    echo $key." = ".$value."<hr/>";
+    echo $key . " = " . $value . "<hr/>";
 }
