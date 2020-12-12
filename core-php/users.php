@@ -7,45 +7,44 @@ $allUsers = "SELECT * FROM users";
 $result = $db->query($allUsers);
 
 // echo $result->num_rows;
-
+require('includes/header.php');
 ?>
 
-<!DOCTYPE html>
-<html lang="en">
-
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Registered Users</title>
-</head>
-
-<body>
-    <table border="1">
-        <tr>
-            <th>#</th>
-            <th>Name</th>
-            <th>Email</th>
-            <th>Gender</th>
-            <th>Action</th>
-        </tr>
-        <?php
-        $i = 1;
-        while ($user = $result->fetch_object()) {
-            // print_r($user);exit;
-        ?>
-
-            <tr>
-                <td><?php echo $i;
-                    $i++; ?></td>
-                <td><?php echo $user->name; ?></td>
-                <td><?php echo $user->email; ?></td>
-                <td><?php echo $user->gender; ?></td>
-                <td><a href="delete.php?del_id=<?php echo $user->id; ?>">DELETE</a></td>
+<div class="card mt-5">
+    <div class="card-header">
+        <h5>Users List <a href="register.php" class="btn btn-primary float-right">CREATE</a></h5>
+    </div>
+    <div class="card-body">
+        <table class="table table-bordered">
+            <tr class="bg-primary text-white">
+                <th>Sr. No.</th>
+                <th>Name</th>
+                <th>Email</th>
+                <th>Gender</th>
+                <th>Action</th>
             </tr>
-        <?php
-        }
-        ?>
-    </table>
-</body>
+            <?php
+            $i = 1;
+            while ($user = $result->fetch_object()) {
+                // print_r($user);exit;
+            ?>
 
-</html>
+                <tr>
+                    <td><?php echo $i;
+                        $i++; ?></td>
+                    <td><?php echo $user->name; ?></td>
+                    <td><?php echo $user->email; ?></td>
+                    <td><?php echo $user->gender; ?></td>
+                    <td><a href="delete.php?del_id=<?php echo $user->id; ?>">DELETE</a>
+                        <a href="edit.php?edit_id=<?php echo $user->id; ?>">EDIT</a></td>
+                </tr>
+            <?php
+            }
+            ?>
+        </table>
+    </div>
+</div>
+
+<?php
+require('includes/footer.php');
+?>

@@ -23,20 +23,31 @@ if (isset($_POST['btnSubmit'])) {
 //      echo "its not set";
 //  }
 
+include('includes/header.php');
 ?>
 
-<!DOCTYPE html>
-<html lang="en">
+<form method="post">
+    <div class="card mt-5">
+        <div class="card-header">
+            <h5>CREATE USER <a href="users.php" class="btn btn-success float-right">BACK</a></h5>
+        </div>
+        <div class="card-body">
+            <div class="form-group">
+                <label for="">Name</label>
+                <input type="text" name="name" id="" class="form-control">
+            </div>
+        </div>
+        <div class="card-footer">
+            <input type="submit" value="CREATE" class="btn btn-secondary">
+        </div>
+    </div>
+</form>
 
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>REGISTER</title>
-</head>
 
-<body>
-    <form action="" method="POST">
-        <table border="0" align="center">
+
+
+<form action="" method="POST">
+    <!-- <table border="0" align="center">
             <tr>
                 <td>Name</td>
                 <td><input type="text" name="name" id="name"></td>
@@ -61,8 +72,8 @@ if (isset($_POST['btnSubmit'])) {
             <tr>
                 <td colspan="2" align="center"><input type="submit" name="btnSubmit" value="REGISTER"></td>
             </tr>
-        </table>
-    </form>
-</body>
-
-</html>
+        </table> -->
+</form>
+<?php
+include('includes/footer.php');
+?>
