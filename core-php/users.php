@@ -17,6 +17,7 @@ require('includes/header.php');
     <div class="card-body">
         <table class="table table-bordered">
             <tr class="bg-primary text-white">
+                <th>Photo</th>
                 <th>Sr. No.</th>
                 <th>Name</th>
                 <th>Email</th>
@@ -30,6 +31,9 @@ require('includes/header.php');
             ?>
 
                 <tr>
+                    <td>
+                        <img src="<?php echo full_path($user->profile_image); ?>" width="100">
+                    </td>
                     <td><?php echo $i;
                         $i++; ?></td>
                     <td><?php echo $user->name; ?></td>
