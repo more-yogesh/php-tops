@@ -17,6 +17,7 @@ $records = $db->query("SELECT * FROM new_users");
 <body>
     <table border="1">
         <tr>
+            <th>Profile</th>
             <th>#</th>
             <th>Name</th>
             <th>Mobile</th>
@@ -30,6 +31,7 @@ $records = $db->query("SELECT * FROM new_users");
         while ($user = $records->fetch_object()) {
         ?>
             <tr>
+                <td><img src="<?php echo userImage($user->image); ?>" height="100"></td>
                 <td><?php echo $i;
                     $i++; ?></td>
                 <td><?php echo $user->name; ?></td>
