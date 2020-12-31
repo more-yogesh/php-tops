@@ -30,7 +30,10 @@ print_r($allProducts);
                 <td><?php echo $product->sub_category; ?></td>
                 <td><?php echo $product->price; ?></td>
                 <td><?php echo $product->description; ?></td>
-                <td><a href="<?php echo url('Controller/ProductController.php?delete_id=' . $product->id); ?>">DELETE</a></td>
+                <td>
+                    <a href="<?php echo url('Controller/ProductController.php?delete_id=' . $product->id); ?>">DELETE</a>
+                    <a href="<?php echo url('View/product/edit.php?edit_id=' . $product->id); ?>">EDIT</a>
+                </td>
             </tr>
         <?php
         }

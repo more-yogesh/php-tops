@@ -33,3 +33,14 @@ if (isset($_GET['delete_id'])) {
     $product->delete('product', $_GET['delete_id']);
     redirect('product/index.php');
 }
+
+if (isset($_GET['edit_id'])) {
+    $record = $product->getWhere('product', ['id' => $_GET['edit_id']]);
+}
+
+if (isset($_POST['btnUpdate'])) {
+    $product->update('product', $_POST, ['id' => $_GET['edit_id']]);
+    redirect('product/index.php');
+}
+
+$categories = $product->getAll('category');

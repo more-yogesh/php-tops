@@ -1,3 +1,7 @@
+<?php
+include('../../Controller/ProductController.php');
+?>
+
 <!DOCTYPE html>
 <html lang="en">
 
@@ -16,11 +20,26 @@
             </tr>
             <tr>
                 <td>Category</td>
-                <td><input type="text" name="category"></td>
+                <td>
+                    <select name="category" id="">
+                        <?php
+
+                        while ($category = $categories->fetch_object()) {
+                        ?>
+                            <option value="<?php echo $category->id; ?>"><?php echo $category->name; ?></option>
+                        <?php
+                        }
+                        ?>
+                    </select>
+                </td>
             </tr>
             <tr>
                 <td>Sub Category</td>
-                <td><input type="text" name="sub_category"></td>
+                <td>
+                    <select name="sub_category" id="">
+                        <option></option>
+                    </select>
+                </td>
             </tr>
             <tr>
                 <td>Price</td>

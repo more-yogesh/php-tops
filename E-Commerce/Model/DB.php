@@ -46,4 +46,53 @@ class DB
         $this->database->query($query);
         return true;
     }
+
+    public function getWhere($table, $where)
+    {
+        $whereKey = array_keys($where);
+        $whereValue = array_values($where);
+        // print_r($whereKey);
+        $query = "select * from $table where $whereKey[0] = $whereValue[0]";
+        $record = $this->database->query($query);
+        return $record->fetch_object();
+    }
+
+    public function update($table, $data, $where)
+    {
+        // UPDATE $table SET 
+        //`key` = '$value', `key` = '$value', `key` = '$value' 
+        //WHERE $key = $value AND $key = $value AND key = value
+
+        $query = "UPDATE $table SET ";
+
+        $data = $this->filterPost($data);
+
+        $dataLength = sizeof($data);
+        $i = 0;
+        foreach ($data as $key => $value) {
+            $i++;
+            if ($dataLength == $i) {
+                $query .= " $key = '" . $value . "'";
+            } else {
+                $query .= " $key = '" . $value . "',";
+            }
+        }
+
+        //        echo $query;exit;
+
+        $query .= " WHERE ";
+
+        $whereLength = sizeof($where);
+        $j = 0;
+        foreach ($where as $key1 => $value1) {
+            $j++;
+            if ($whereLength == $j) {
+                $query .= " $key1 = '" . $value1 . "'";
+            } else {
+                $query .= " $key1 = '" . $value1 . "' AND ";
+            }
+        }
+        $this->database->query($query);
+        return true;
+    }
 }
