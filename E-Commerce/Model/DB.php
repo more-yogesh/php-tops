@@ -95,4 +95,9 @@ class DB
         $this->database->query($query);
         return true;
     }
+
+    public function query($query)
+    {
+        return $this->database->query($query);
+    }
 }

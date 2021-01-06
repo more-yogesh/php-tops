@@ -21,7 +21,7 @@ include('../../Controller/ProductController.php');
             <tr>
                 <td>Category</td>
                 <td>
-                    <select name="category" id="">
+                    <select name="category" id="" onchange="getSubcategories(this.value)">
                         <?php
 
                         while ($category = $categories->fetch_object()) {
@@ -37,7 +37,7 @@ include('../../Controller/ProductController.php');
                 <td>Sub Category</td>
                 <td>
                     <select name="sub_category" id="">
-                        <option></option>
+                        <option value=""></option>
                     </select>
                 </td>
             </tr>
@@ -55,6 +55,30 @@ include('../../Controller/ProductController.php');
 
         </table>
     </form>
+    <script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
+    <script>
+        function getSubcategories(id) {
+            // alert();
+            $.ajax({
+                url: 'http://localhost/php-tops-batch/E-Commerce/Controller/ProductController.php?category_id=' + id,
+                method: 'GET',
+                dataType: 'JSON',
+                success: function(successData) {
+                    // console.log(successData);
+                    var len = successData.length;
+                    var subOptions = '';
+                    for (i = 0; i < len; i++) {
+                        subOptions += '<option value="' + successData[i].id + '">' + successData[i].name + '</option>'
+                    }
+
+                    // console.log(subOptions);
+                    $('[name="sub_category"]').html(subOptions);
+
+                }
+            });
+
+        }
+    </script>
 </body>
 
 </html>

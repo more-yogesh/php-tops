@@ -44,3 +44,19 @@ if (isset($_POST['btnUpdate'])) {
 }
 
 $categories = $product->getAll('category');
+
+if (isset($_GET['category_id'])) {
+    $subCates = $product->query("select * from sub_category where category_id = $_GET[category_id]");
+    // print_r($subCates);
+
+    $subCategoryJson = [];
+    $index = 0;
+    while ($cat = $subCates->fetch_object()) {
+        $subCategoryJson[$index]['id'] = $cat->id;
+        $subCategoryJson[$index]['name'] = $cat->sub_category_name;
+        $index++;
+    }
+    echo json_encode($subCategoryJson);
+    // echo "<pre>";
+    // print_r($subCategoryJson);
+}
