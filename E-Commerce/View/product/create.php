@@ -73,7 +73,6 @@ include('../../Controller/ProductController.php');
 
                     // console.log(subOptions);
                     $('[name="sub_category"]').html(subOptions);
-
                 }
             });
 
